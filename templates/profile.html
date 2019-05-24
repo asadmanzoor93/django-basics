@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}Update User Profile{% endblock %}
+
+{% block content %}
+    <h1>Update User Profile</h1>
+    <form method="post">
+        {% csrf_token %}
+        {% for field in form %}
+            <p>
+                <strong>{{ field.label_tag }}</strong><br>
+                {{ field }}<br>
+                {% if field.help_text %}
+                    <small class="info_msg">{{ field.help_text }}</small>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p class="error_msg">{{ error }}</p>
+                {% endfor %}
+            </p>
+        {% endfor %}
+        <button type="submit">Update Profile</button>
+    </form>
+     <script>
+        $(function() {
+            $( "#id_birth_date" ).datepicker({
+              changeMonth: true,
+              changeYear: true,
+              yearRange: "1970:2070"
+            });
+        });
+    </script>
+{% endblock %}

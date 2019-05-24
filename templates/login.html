@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+    <h1>Login Panel</h1>
+    {% for message in messages %}
+        <div class="alert alert-success">
+            <span class="error_msg">{{ message }}</span>
+        </div>
+        <br>
+    {% endfor %}
+    <form class="form-horizontal" name="LoginForm" method="post">
+        {% csrf_token %}
+        <div class="control-group">
+        <label class="control-label" for="username">Username</label>
+            <div class="controls">
+                <input type="text" id="username" name="username" value="" placeholder="Username">
+            </div>
+        </div><br>
+        <div class="control-group">
+            <label class="control-label" for="password">Password</label>
+                <div class="controls">
+                    <input type="password" name="password" id="password" placeholder="Password">
+                </div>
+        </div><br>
+        <div class="control-group">
+            <div class="controls">
+                <button type="submit" class="btn">Login</button>
+            </div>
+        </div>
+    </form>
+{% endblock %}

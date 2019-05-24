@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Form Validation{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <script src="{% static 'singup_form_validation.js' %}"></script>
+
+    <h1>Javascript Form Validation</h1>
+    <form method="post">
+        <p>
+            <strong><label for="id_first_name">First name</label></strong><br>
+            <input type="text" name="first_name" maxlength="50" id="id_first_name"><br>
+        </p>
+
+        <p>
+            <strong><label for="id_last_name">Last name</label></strong><br>
+            <input type="text" name="last_name" maxlength="50" id="id_last_name"><br>
+        </p>
+
+        <p>
+            <strong>
+                <label for="id_username">Username</label>
+                <span class="error_msg error_text" id="username_error"> *</span>
+            </strong><br>
+            <input type="text" name="username" value="" maxlength="300" required="" id="id_username"><br>
+        </p>
+
+        <p>
+            <strong>
+                <label for="id_email">Email address</label>
+                <span class="error_msg error_text" id="email_error"> *</span>
+            </strong><br>
+            <input type="email" name="email" value="" maxlength="255" required="" id="id_email"><br>
+        </p>
+
+        <p>
+            <strong>
+                <label for="id_birth_date">Birth date</label>
+                <span class="error_msg error_text" id="birth_date_error"> *</span></strong><br>
+            <input type="text" name="birth_date" value="" class="datepicker" id="id_birth_date">
+        </p>
+
+        <p>
+            <strong><label for="id_location">Location</label></strong><br>
+            <select name="location" id="id_location">
+                <option value="LHR" selected="">Lahore</option>
+                <option value="ISL">Islamabad</option>
+                <option value="KHI">Karachi</option>
+                <option value="PEW">Peshawar</option>
+                <option value="QTA">Quetta</option>
+            </select><br>
+        </p>
+
+        <p>
+            <strong><label for="id_bio">Bio:</label></strong><br>
+            <textarea name="bio" cols="40" rows="10" maxlength="500" id="id_bio"></textarea><br>
+        </p>
+        <br><span class="error_msg"> * donate required fields</span><br><br>
+        <button type="button" onclick="validate_form()">Validate Form</button>
+        <h4> Do you want to return <a href="{% url 'home' %}">Home</a></h4>
+    </form>
+{% endblock %}

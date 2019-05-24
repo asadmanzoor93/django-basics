@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <h2>Home - User Panel</h2>
+    {% if user.is_authenticated %}
+        Welcome {{ user.get_full_name }} !!
+        <h4>Profile Detail:</h4>
+        <ul>
+            <li><strong>First Name:</strong> {{ user.first_name }}</li>
+            <li><strong>Last Name:</strong> {{ user.last_name }}</li>
+            <li><strong>Email:</strong> {{ user.email }}</li>
+            <li><strong>Username:</strong> {{ user.username }}</li>
+            <li><strong>Location:</strong> {{ user.location }}</li>
+            <li><strong>Birth Date:</strong> {{ user.birth_date }}</li>
+            <li><strong>Bio:</strong> {{ user.bio }}</li>
+            <li><strong>User Number:</strong> {{ user.user_number }}</li>
+        </ul>
+        <p>Do you want to <a href="{% url 'user_profile' %}">Update Profile</a></p>
+        <p>Do you want to <a href="{% url 'user_logout' %}">Logout</a></p>
+    {% else %}
+        <p>Existing User? Please Login :: <a href="{% url 'user_login' %}">Login</a></p>
+        <p>New User? Please Sign Up :: <a href="{% url 'user_signup' %}">Signup</a></p>
+        <p>JavaScript Custom Validation :: <a href="{% url 'signup_form' %}">Validate Form</a></p>
+
+    {% endif %}
+{% endblock %}
